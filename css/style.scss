@@ -1,0 +1,250 @@
+$large: '(max-width: 1599px)';        //1600보다 작은 크기
+$large-semi: '(max-width: 1199px)';   //1200보다 작은 크기
+$medium: '(max-width: 899px)';   
+$small: '(max-width: 767px)';   
+$mobile: '(max-width: 539px)';   
+$gradient: linear-gradient(45deg, #5DBCD8, #0C569B);
+
+@mixin space {
+  content: '';
+  display: block;
+}
+
+
+ul::after, section::after{
+  @include space();
+  clear: both;
+}
+
+body{
+  font: {
+    family: Arial, Helvetica, sans-serif;
+    size: 10px;
+  };
+}
+
+header{
+  position: fixed;
+  top: 0;left: 0;
+  z-index: 100;
+  width: 400px;height: 100%;
+  background-image: $gradient;
+  transition: all .5s;
+  h1{
+    position: absolute;
+    top: 50%;left: 50px;
+    transform: translateY(-150%);
+    color: #fff;
+    letter-spacing: 0.1em;
+    font: {
+      family: 'Special Elite', cursive;
+      size: 5em;
+      weight: 400;
+    }
+    &::before{
+      @include space;
+      content: 'BLUE IMAGES GALLERY';
+      font-size: 0.25em;
+      opacity: .7;
+      position: absolute;
+      bottom: -2.5em;
+    }
+    &::after{
+      @include space;
+      width: 150px;height: 2px;
+      background-color: rgba(255, 255, 255,.5);
+    }
+    
+  }
+
+  .sns{
+    position: absolute;
+    bottom: 100px;
+    right: 10em;
+    li{
+      float: left;
+      margin: 0 1em;
+      a{
+        color: #fff;
+        font-size: 1.3em;
+        i{
+          font-size: 1.3em;
+        }
+      }
+    }
+  }
+
+  @media #{$large} {  //1600보다 작아졌을 때
+    width: 350px;
+    h1{
+      left: 40px;
+    }
+    .sns{
+      right: 6.5em;
+    }
+  }
+  @media #{$large-semi} { //1200보다 작아졌을 때
+    width: 100%;
+    height: 80px;
+    h1{
+      transform: translateY(-50%);
+      font-size: 3.5em;
+      &::before{display: none;}
+      &::after{width: 80px;}
+    }
+    .sns{
+      bottom: 3.2em;
+      right: 2em;
+      span{display: none;}
+    }
+  }
+  @media #{$mobile}{
+    h1{
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .sns{display: none;}
+  }
+}
+
+main{
+  margin-left: 400px;
+  padding: 20px;
+  @media #{$large} {
+    margin-left: 350px;
+  }
+  @media #{$large-semi}{
+    margin-left: 0;
+    margin-top: 80px;
+  }
+}
+
+nav{
+  .btns{
+    margin-bottom: 20px;
+  }
+  li{
+    width: 100px;
+    height: 30px;
+    float: right;
+    margin-left: 20px;
+    &.on a{
+      background-image: $gradient;
+      color: #fff;
+    }
+    a{
+      display: inline-block;
+      width: 100%;height: 100%;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0, 156, 218, 0.301);
+      border-radius: 5px;
+      text-align: center;
+      line-height: 30px;
+      font: {
+        family: 'Iceland', cursive;
+        size: 2em;
+        weight: 600;
+      }
+      color: #999;
+      transition: .5s;
+      &:hover{
+        background-image: $gradient;
+        color: #fff;
+      }
+    }
+    @media #{$small}{
+      width: 33.33%;
+      margin-left: 0;
+      a{
+        width: 90%;
+      }
+    }
+  }
+}
+
+article{
+  width: 20%;
+  float: left;
+  padding: 12px;
+  div{
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+    padding: 10px;
+    border-radius: 8px;
+    img{
+      width: 100%;
+    }
+    h2{
+      margin: 10px 0 5px;
+      color: #333;
+      font: {
+        family: 'Iceland', cursive;
+        size: 2em;
+      }
+    }
+    p{
+      font-size: 1.1em;
+      color: #777;
+    }
+  }
+  @media #{$large}{
+    width: 25%;
+  }
+  @media #{$medium}{
+    width: 33.33%;
+  }
+  @media #{$small}{
+    width: 50%;
+  }
+  @media #{$mobile}{
+    width: 100%;
+  }
+}
+
+#popup{
+  position: fixed;
+  left: 0;top: 0;
+  width: 100vw;height: 100vh;
+  background: rgb(0 0 0 / 70%);
+  z-index: 200;
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  div{
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 2px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0,.5);
+  }
+  
+  img{
+    width: auto;height: auto;
+    max-width: 80vw;max-height: 60vh;
+  }
+
+  h2{
+    font: {
+      family: 'Iceland', cursive;
+      size: 2em;
+    }
+    margin: 16px 0 5px;
+  }
+  p{
+    font-size: 1.1em;
+    color: #777;
+  }
+
+  &.on{display: flex;}
+
+}
+
+
+
+
+
+
+
+
+
+
+
